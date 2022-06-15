@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"kubernetes.io/ingress.class":"nginx","meta.helm.sh/release-name":"nodejs-sample-0-0-0","meta.helm.sh/release-namespace":"cicd-preview-env"},"generation":1,"labels":{"app.kubernetes.io/instance":"nodejs-sample-0-0-0","app.kubernetes.io/managed-by":"Helm","app.kubernetes.io/name":"nodejs-sample","app.kubernetes.io/version":"1.0.0","helm.sh/chart":"nodejs-sample-0.1.0"},"name":"jmeter-grafana-ingress","namespace":"jmeter","resourceVersion":"355117960","uid":"8247a1eb-7303-4dc8-b4a0-9f7b764a3080"},"spec":{"rules":[{"host":"jmeter-grafana.devops.elm.sa","http":{"paths":[{"backend":{"service":{"name":"jmeter-grafana-7df6646db4-pf8qj","port":{"number":3000}}},"path":"/","pathType":"ImplementationSpecific"}]}}]},"status":{"loadBalancer":{"ingress":[{"ip":"10.108.197.92"}]}}}
+    kubernetes.io/ingress.class: nginx
+    meta.helm.sh/release-name: nodejs-sample-0-0-0
+    meta.helm.sh/release-namespace: cicd-preview-env
+  creationTimestamp: "2022-05-29T09:43:20Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: nodejs-sample-0-0-0
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: nodejs-sample
+    app.kubernetes.io/version: 1.0.0
+    helm.sh/chart: nodejs-sample-0.1.0
+  name: jmeter-grafana-ingress
+  namespace: jmeter
+  resourceVersion: "567558417"
+  uid: 49e52bba-dbf4-4dc7-939b-75c1842fec54
+spec:
+  rules:
+  - host: jmeter-grafana.devops.elm.sa
+    http:
+      paths:
+      - backend:
+          service:
+            name: jmeter-grafana-service
+            port:
+              number: 3000
+        path: /
+        pathType: ImplementationSpecific
+status:
+  loadBalancer:
+    ingress:
+    - ip: 10.108.197.92
